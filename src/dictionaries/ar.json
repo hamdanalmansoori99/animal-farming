@@ -1,0 +1,67 @@
+{
+  "site": {
+    "title": "دليل تربية الحيوانات",
+    "tagline": "دليل شامل لتربية حيوانات المزرعة، من التغذية والرعاية إلى الصحة والسلالات."
+  },
+  "nav": {
+    "home": "الرئيسية",
+    "animals": "الحيوانات",
+    "search": "بحث",
+    "switchLanguage": "English"
+  },
+  "farms": {
+    "farm1": "المزرعة الأولى",
+    "farm2": "المزرعة الثانية"
+  },
+  "sections": {
+    "overview": "نظرة عامة",
+    "history": "التاريخ والإرث",
+    "breeds": "السلالات والأنواع",
+    "housing": "المسكن والبيئة",
+    "nutrition": "التغذية",
+    "dailyCare": "الرعاية اليومية",
+    "training": "التدريب",
+    "health": "الصحة والوقاية",
+    "supplements": "المكملات والفيتامينات",
+    "problems": "المشاكل الشائعة",
+    "breeding": "التكاثر",
+    "glossary": "معجم من أ إلى ي"
+  },
+  "labels": {
+    "sources": "المصادر",
+    "lastReviewed": "آخر مراجعة",
+    "comingSoon": "قريباً",
+    "viewAnimal": "افتح الدليل",
+    "openGuide": "افتح الدليل",
+    "backToAnimal": "العودة إلى الدليل",
+    "organic": "عضوي",
+    "pharmaceutical": "دوائي",
+    "vetWarning": "تحذير: هذا المحتوى لأغراض المعرفة فقط ولا يُغني عن استشارة طبيب بيطري مرخّص قبل استخدام أي علاج أو دواء.",
+    "featuredEyebrow": "محور الدليل",
+    "featuredTitle": "البداية مع الصقور",
+    "browseAll": "تصفّح كل الحيوانات",
+    "chapter": "الفصل",
+    "chaptersPublished": "{published} من {total} فصول منشورة",
+    "stat_animals_farms": "{animals} حيواناً · {farms} مزرعتان",
+    "homeEyebrow": "دليل المزارع",
+    "section_one_source": "مصدر واحد",
+    "section_n_sources": "{n} مصادر",
+    "minutesRead": "قراءة قصيرة",
+    "themeToDark": "تفعيل الوضع الداكن",
+    "themeToLight": "تفعيل الوضع الفاتح"
+  },
+  "falconSpecies": {
+    "selectorLabel": "اختر نوع الصقر",
+    "saker": "الحرّ",
+    "peregrine": "الشاهين",
+    "gyrfalcon": "الجير"
+  },
+  "supplementMode": {
+    "selectorLabel": "اختر الوضع",
+    "organic": "عضوي",
+    "pharmaceutical": "دوائي",
+    "warning": "تحذير: المحتوى الدوائي للمعرفة فقط. لا تُعطِ أيّاً من هذه المواد دون وصفة من طبيب بيطري مرخّص. الجرعات والمواد المذكورة استرشادية، وقد تختلف بحسب الصقر وحالته.",
+    "firstLineLabel": "الخيار الأول (عضوي)",
+    "vetLineLabel": "قد يستخدم الطبيب أيضاً (دوائي)"
+  }
+}

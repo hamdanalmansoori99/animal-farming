@@ -1,0 +1,67 @@
+{
+  "site": {
+    "title": "Animal Farming Guide",
+    "tagline": "A complete, citation-backed guide to raising farm animals — from nutrition and care to health and bloodlines."
+  },
+  "nav": {
+    "home": "Home",
+    "animals": "Animals",
+    "search": "Search",
+    "switchLanguage": "العربية"
+  },
+  "farms": {
+    "farm1": "Farm One",
+    "farm2": "Farm Two"
+  },
+  "sections": {
+    "overview": "Overview",
+    "history": "History & Heritage",
+    "breeds": "Breeds & Types",
+    "housing": "Housing & Environment",
+    "nutrition": "Nutrition",
+    "dailyCare": "Daily Care",
+    "training": "Training",
+    "health": "Health & Prevention",
+    "supplements": "Supplements & Vitamins",
+    "problems": "Common Problems",
+    "breeding": "Breeding",
+    "glossary": "A–Z Glossary"
+  },
+  "labels": {
+    "sources": "Sources",
+    "lastReviewed": "Last reviewed",
+    "comingSoon": "Coming soon",
+    "viewAnimal": "Open guide",
+    "openGuide": "Open guide",
+    "backToAnimal": "Back to guide",
+    "organic": "Organic",
+    "pharmaceutical": "Pharmaceutical",
+    "vetWarning": "Warning: this content is for informational purposes only and is not a substitute for consulting a licensed veterinarian before administering any treatment or medication.",
+    "featuredEyebrow": "Currently in focus",
+    "featuredTitle": "Begin with falcons",
+    "browseAll": "Browse all animals",
+    "chapter": "Chapter",
+    "chaptersPublished": "{published} of {total} chapters published",
+    "stat_animals_farms": "{animals} animals · {farms} farms",
+    "homeEyebrow": "Farm Guide",
+    "section_one_source": "1 source",
+    "section_n_sources": "{n} sources",
+    "minutesRead": "A short read",
+    "themeToDark": "Switch to dark mode",
+    "themeToLight": "Switch to light mode"
+  },
+  "falconSpecies": {
+    "selectorLabel": "Choose your falcon",
+    "saker": "Saker",
+    "peregrine": "Peregrine",
+    "gyrfalcon": "Gyrfalcon"
+  },
+  "supplementMode": {
+    "selectorLabel": "Choose mode",
+    "organic": "Organic",
+    "pharmaceutical": "Pharmaceutical",
+    "warning": "Warning: Pharmaceutical content is for information only. Do not administer any of these without a prescription from a licensed veterinarian. Substances and dosages shown are guideline references only and vary by the individual bird and its condition.",
+    "firstLineLabel": "First line (organic)",
+    "vetLineLabel": "Vet may also use (pharmaceutical)"
+  }
+}
