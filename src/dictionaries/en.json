@@ -63,5 +63,10 @@
     "warning": "Warning: Pharmaceutical content is for information only. Do not administer any of these without a prescription from a licensed veterinarian. Substances and dosages shown are guideline references only and vary by the individual bird and its condition.",
     "firstLineLabel": "First line (organic)",
     "vetLineLabel": "Vet may also use (pharmaceutical)"
+  },
+  "problems": {
+    "causes": "Likely causes",
+    "action": "What to try first",
+    "vet": "When to call the vet"
   }
 }

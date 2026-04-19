@@ -21,6 +21,7 @@ import {
   PharmaceuticalWarning,
   TimingEntry,
 } from "@/components/SupplementMode";
+import { ProblemCard } from "@/components/ProblemCard";
 
 export default async function SectionPage({
   params,
@@ -75,6 +76,21 @@ export default async function SectionPage({
         labels={{
           firstLine: dict.supplementMode.firstLineLabel,
           vet: dict.supplementMode.vetLineLabel,
+        }}
+      />
+    ),
+    ProblemCard: (props: {
+      problem: string;
+      causes: string;
+      action: string;
+      vet?: string;
+    }) => (
+      <ProblemCard
+        {...props}
+        labels={{
+          causes: dict.problems.causes,
+          action: dict.problems.action,
+          vet: dict.problems.vet,
         }}
       />
     ),
