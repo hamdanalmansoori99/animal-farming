@@ -35,6 +35,7 @@ export function Hero({
             alt={imageAlt}
             fill
             priority
+            quality={90}
             className="object-cover opacity-95"
             sizes="100vw"
           />
