@@ -1,8 +1,9 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { hasLocale, getDictionary } from "@/lib/i18n";
-import { SLUG_TO_SECTION } from "@/lib/animals";
+import { SECTION_SLUG, SLUG_TO_SECTION } from "@/lib/animals";
 import { loadSection } from "@/lib/content";
 import { Ornament } from "@/components/Ornament";
 import {
@@ -18,6 +19,37 @@ import {
   TimingEntry,
 } from "@/components/SupplementMode";
 import { ProblemCard } from "@/components/ProblemCard";
+
+export async function generateMetadata(
+  { params }: PageProps<"/[locale]/guide/[section]">
+): Promise<Metadata> {
+  const { locale, section } = await params;
+  if (!hasLocale(locale)) return {};
+  const sectionId = SLUG_TO_SECTION[section];
+  if (!sectionId) return {};
+  const loaded = await loadSection(locale, sectionId);
+  if (!loaded.exists) return {};
+  const { title, summary } = loaded.frontmatter;
+  const path = `/${locale}/guide/${SECTION_SLUG[sectionId]}`;
+  const altSlug = SECTION_SLUG[sectionId];
+  return {
+    title,
+    description: summary,
+    alternates: {
+      canonical: path,
+      languages: {
+        ar: `/ar/guide/${altSlug}`,
+        en: `/en/guide/${altSlug}`,
+        "x-default": `/ar/guide/${altSlug}`,
+      },
+    },
+    openGraph: {
+      title,
+      description: summary,
+      type: "article",
+    },
+  };
+}
 
 export default async function SectionPage({
   params,

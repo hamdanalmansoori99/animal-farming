@@ -58,6 +58,26 @@ export async function generateMetadata(
   return {
     title: { default: dict.site.title, template: `%s · ${dict.site.title}` },
     description: dict.site.tagline,
+    alternates: {
+      canonical: `/${locale}`,
+      languages: {
+        ar: "/ar",
+        en: "/en",
+        "x-default": "/ar",
+      },
+    },
+    openGraph: {
+      title: dict.site.title,
+      description: dict.site.tagline,
+      locale,
+      type: "website",
+      siteName: dict.site.title,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: dict.site.title,
+      description: dict.site.tagline,
+    },
   };
 }
 

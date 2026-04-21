@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { hasLocale, getDictionary } from "@/lib/i18n";
@@ -5,6 +6,26 @@ import { ALL_SECTIONS } from "@/lib/animals";
 import { listExistingSections, loadSection } from "@/lib/content";
 import { Hero } from "@/components/Hero";
 import { ChapterCard } from "@/components/ChapterCard";
+
+export async function generateMetadata(
+  { params }: PageProps<"/[locale]/guide">
+): Promise<Metadata> {
+  const { locale } = await params;
+  if (!hasLocale(locale)) return {};
+  const dict = await getDictionary(locale);
+  return {
+    title: dict.nav.guide,
+    description: dict.site.tagline,
+    alternates: {
+      canonical: `/${locale}/guide`,
+      languages: {
+        ar: "/ar/guide",
+        en: "/en/guide",
+        "x-default": "/ar/guide",
+      },
+    },
+  };
+}
 
 export default async function GuideIndexPage({
   params,
