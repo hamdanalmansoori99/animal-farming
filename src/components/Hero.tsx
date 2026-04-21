@@ -63,11 +63,19 @@ export function Hero({
             {tagline}
           </p>
         )}
-        <div className="mt-7 flex justify-center text-(--color-gold-500)">
-          <Ornament />
-        </div>
+        {/* The ornament only reads clearly against a plain background.
+            Over a dark hero photo its faint connecting lines disappear and
+            only the central diamonds remain, which look like orphan dots.
+            Skip it when there's an image and lean on spacing alone. */}
+        {!imageSrc && (
+          <div className="mt-7 flex justify-center text-(--color-gold-500)">
+            <Ornament />
+          </div>
+        )}
         {meta && (
-          <div className="mt-5 text-sm hero-text-muted">{meta}</div>
+          <div className={`${imageSrc ? "mt-8" : "mt-5"} text-sm hero-text-muted`}>
+            {meta}
+          </div>
         )}
         {cta && (
           <div className="mt-8">
