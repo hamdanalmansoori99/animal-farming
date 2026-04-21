@@ -38,17 +38,20 @@ export type LoadedSection = {
 
 const CONTENT_ROOT = path.join(process.cwd(), "src", "content");
 
-function sectionFilePath(locale: Locale, animalSlug: string, section: SectionId): string {
+// The subject slug is fixed — content lives at content/{locale}/falcons/{section}.mdx.
+// If the site ever covers more subjects again, swap this for a parameter.
+const SUBJECT_DIR = "falcons";
+
+function sectionFilePath(locale: Locale, section: SectionId): string {
   const sectionSlug = SECTION_SLUG[section];
-  return path.join(CONTENT_ROOT, locale, animalSlug, `${sectionSlug}.mdx`);
+  return path.join(CONTENT_ROOT, locale, SUBJECT_DIR, `${sectionSlug}.mdx`);
 }
 
 export async function loadSection(
   locale: Locale,
-  animalSlug: string,
   section: SectionId
 ): Promise<LoadedSection> {
-  const filePath = sectionFilePath(locale, animalSlug, section);
+  const filePath = sectionFilePath(locale, section);
   let raw: string;
   try {
     raw = await fs.readFile(filePath, "utf8");
@@ -70,10 +73,9 @@ export async function loadSection(
 }
 
 export async function listExistingSections(
-  locale: Locale,
-  animalSlug: string
+  locale: Locale
 ): Promise<Set<SectionId>> {
-  const dir = path.join(CONTENT_ROOT, locale, animalSlug);
+  const dir = path.join(CONTENT_ROOT, locale, SUBJECT_DIR);
   const present = new Set<SectionId>();
   try {
     const files = await fs.readdir(dir);

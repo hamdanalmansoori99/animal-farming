@@ -110,8 +110,8 @@ export default async function LocaleLayout({
               <Link href={`/${locale}`} className="link-underline hidden sm:inline">
                 {dict.nav.home}
               </Link>
-              <Link href={`/${locale}/animals`} className="link-underline">
-                {dict.nav.animals}
+              <Link href={`/${locale}/guide`} className="link-underline">
+                {dict.nav.guide}
               </Link>
               <ThemeToggle
                 labels={{

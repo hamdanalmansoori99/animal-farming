@@ -1,17 +1,13 @@
 {
   "site": {
-    "title": "دليل تربية الحيوانات",
-    "tagline": "دليل شامل لتربية حيوانات المزرعة، من التغذية والرعاية إلى الصحة والسلالات."
+    "title": "دليل الصقار",
+    "tagline": "دليل ثنائي اللغة موثّق المصادر للصقارة — التغذية، الصحة، التدريب، والرعاية للحرّ والشاهين والجير."
   },
   "nav": {
     "home": "الرئيسية",
-    "animals": "الحيوانات",
+    "guide": "الدليل",
     "search": "بحث",
     "switchLanguage": "English"
-  },
-  "farms": {
-    "farm1": "المزرعة الأولى",
-    "farm2": "المزرعة الثانية"
   },
   "sections": {
     "overview": "نظرة عامة",
@@ -31,19 +27,19 @@
     "sources": "المصادر",
     "lastReviewed": "آخر مراجعة",
     "comingSoon": "قريباً",
-    "viewAnimal": "افتح الدليل",
-    "openGuide": "افتح الدليل",
-    "backToAnimal": "العودة إلى الدليل",
+    "openGuide": "افتح الفصل",
+    "backToGuide": "العودة إلى كل الفصول",
     "organic": "عضوي",
     "pharmaceutical": "دوائي",
     "vetWarning": "تحذير: هذا المحتوى لأغراض المعرفة فقط ولا يُغني عن استشارة طبيب بيطري مرخّص قبل استخدام أي علاج أو دواء.",
-    "featuredEyebrow": "محور الدليل",
-    "featuredTitle": "البداية مع الصقور",
-    "browseAll": "تصفّح كل الحيوانات",
+    "featuredEyebrow": "ابدأ من هنا",
+    "featuredTitle": "ابدأ بنظرة عامة",
+    "browseAll": "تصفّح كل الفصول",
+    "startWithOverview": "ابدأ بنظرة عامة",
     "chapter": "الفصل",
     "chaptersPublished": "{published} من {total} فصول منشورة",
-    "stat_animals_farms": "{animals} حيواناً · {farms} مزرعتان",
-    "homeEyebrow": "دليل المزارع",
+    "homeEyebrow": "دليل الصقارة",
+    "homeStat": "{published} فصول حيّة · الحرّ · الشاهين · الجير",
     "section_one_source": "مصدر واحد",
     "section_n_sources": "{n} مصادر",
     "minutesRead": "قراءة قصيرة",

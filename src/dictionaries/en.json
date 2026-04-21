@@ -1,17 +1,13 @@
 {
   "site": {
-    "title": "Animal Farming Guide",
-    "tagline": "A complete, citation-backed guide to raising farm animals — from nutrition and care to health and bloodlines."
+    "title": "The Falconer's Handbook",
+    "tagline": "A bilingual, citation-backed guide to falconry — nutrition, health, training, and care for sakers, peregrines, and gyrfalcons."
   },
   "nav": {
     "home": "Home",
-    "animals": "Animals",
+    "guide": "Guide",
     "search": "Search",
     "switchLanguage": "العربية"
-  },
-  "farms": {
-    "farm1": "Farm One",
-    "farm2": "Farm Two"
   },
   "sections": {
     "overview": "Overview",
@@ -31,19 +27,19 @@
     "sources": "Sources",
     "lastReviewed": "Last reviewed",
     "comingSoon": "Coming soon",
-    "viewAnimal": "Open guide",
     "openGuide": "Open guide",
-    "backToAnimal": "Back to guide",
+    "backToGuide": "Back to all chapters",
     "organic": "Organic",
     "pharmaceutical": "Pharmaceutical",
     "vetWarning": "Warning: this content is for informational purposes only and is not a substitute for consulting a licensed veterinarian before administering any treatment or medication.",
-    "featuredEyebrow": "Currently in focus",
-    "featuredTitle": "Begin with falcons",
-    "browseAll": "Browse all animals",
+    "featuredEyebrow": "Start here",
+    "featuredTitle": "Begin with the Overview",
+    "browseAll": "Browse all chapters",
+    "startWithOverview": "Start with the Overview",
     "chapter": "Chapter",
     "chaptersPublished": "{published} of {total} chapters published",
-    "stat_animals_farms": "{animals} animals · {farms} farms",
-    "homeEyebrow": "Farm Guide",
+    "homeEyebrow": "Falconry Guide",
+    "homeStat": "{published} chapters live · Saker · Peregrine · Gyrfalcon",
     "section_one_source": "1 source",
     "section_n_sources": "{n} sources",
     "minutesRead": "A short read",

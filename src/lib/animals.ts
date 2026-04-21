@@ -1,3 +1,9 @@
+// This file is named "animals" for historical reasons. The app is now
+// a falconry-only product; the single "falcon" entry is retained because
+// all chapter content, section metadata, and MDX loading still revolve
+// around a canonical subject. If we add a second bird later (kestrel,
+// hawk), this module generalises back cleanly.
+
 import type { Locale } from "@/lib/i18n";
 
 export type SectionId =
@@ -29,7 +35,7 @@ export const ALL_SECTIONS: readonly SectionId[] = [
   "glossary",
 ] as const;
 
-/** Maps SectionId to its filename slug under content/{locale}/{animal}/ */
+/** Maps SectionId to its filename slug under content/{locale}/falcons/ */
 export const SECTION_SLUG: Record<SectionId, string> = {
   overview: "overview",
   history: "history",
@@ -49,53 +55,13 @@ export const SLUG_TO_SECTION: Record<string, SectionId> = Object.fromEntries(
   Object.entries(SECTION_SLUG).map(([id, slug]) => [slug, id as SectionId])
 );
 
-export type FarmId = "farm1" | "farm2";
+/** The single subject of the guide. Retained as a record so the code
+ *  generalises if we ever add more birds. */
+export const FALCON = {
+  slug: "falcons",
+  emoji: "🦅",
+  names: { ar: "الصقور", en: "Falcons" } as Record<Locale, string>,
+  image: "/images/falcon-portrait.png",
+} as const;
 
-export type Animal = {
-  slug: string;
-  farm: FarmId;
-  names: Record<Locale, string>;
-  emoji: string;
-  /**
-   * Optional public-relative path to a portrait image (e.g. "/images/animals/falcons.jpg").
-   * Computed automatically from slug — drop a JPG at public/images/animals/{slug}.jpg
-   * and the card / hero will pick it up at build time. Override here if needed.
-   */
-  image?: string;
-  /** Sections supported for this animal. Default: ALL_SECTIONS minus any in `disabled`. */
-  disabled?: readonly SectionId[];
-};
-
-/** Returns the conventional image path for an animal, even if the file isn't present. */
-export function animalImagePath(animal: Animal): string {
-  return animal.image ?? `/images/animals/${animal.slug}.png`;
-}
-
-export const ANIMALS: readonly Animal[] = [
-  // Farm 1
-  { slug: "falcons",       farm: "farm1", emoji: "🦅", names: { ar: "الصقور",       en: "Falcons" } },
-  { slug: "salukis",       farm: "farm1", emoji: "🐕", names: { ar: "السلوقي",      en: "Salukis" } },
-  { slug: "dogs",          farm: "farm1", emoji: "🐶", names: { ar: "الكلاب",       en: "Dogs" } },
-  { slug: "arabian-oryx",  farm: "farm1", emoji: "🦌", names: { ar: "المها العربي", en: "Arabian Oryx" } },
-  { slug: "horses",        farm: "farm1", emoji: "🐎", names: { ar: "الخيول",       en: "Horses" } },
-  // Farm 2
-  { slug: "chickens",      farm: "farm2", emoji: "🐓", names: { ar: "الدجاج",       en: "Chickens" } },
-  { slug: "lambs",         farm: "farm2", emoji: "🐑", names: { ar: "الحملان",      en: "Lambs" } },
-  { slug: "sheep",         farm: "farm2", emoji: "🐏", names: { ar: "الأغنام",      en: "Sheep" } },
-  { slug: "camels",        farm: "farm2", emoji: "🐪", names: { ar: "الإبل",        en: "Camels" } },
-  { slug: "pigeons",       farm: "farm2", emoji: "🕊️", names: { ar: "الحمام",       en: "Pigeons" } },
-  { slug: "cows",          farm: "farm2", emoji: "🐄", names: { ar: "الأبقار",      en: "Cows" } },
-];
-
-export function getAnimal(slug: string): Animal | undefined {
-  return ANIMALS.find((a) => a.slug === slug);
-}
-
-export function sectionsFor(animal: Animal): readonly SectionId[] {
-  if (!animal.disabled) return ALL_SECTIONS;
-  return ALL_SECTIONS.filter((s) => !animal.disabled!.includes(s));
-}
-
-export function animalsByFarm(farm: FarmId): readonly Animal[] {
-  return ANIMALS.filter((a) => a.farm === farm);
-}
+export type FalconSubject = typeof FALCON;

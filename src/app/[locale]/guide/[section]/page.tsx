@@ -2,11 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { hasLocale, getDictionary } from "@/lib/i18n";
-import {
-  getAnimal,
-  sectionsFor,
-  SLUG_TO_SECTION,
-} from "@/lib/animals";
+import { SLUG_TO_SECTION } from "@/lib/animals";
 import { loadSection } from "@/lib/content";
 import { Ornament } from "@/components/Ornament";
 import {
@@ -25,19 +21,15 @@ import { ProblemCard } from "@/components/ProblemCard";
 
 export default async function SectionPage({
   params,
-}: PageProps<"/[locale]/animals/[slug]/[section]">) {
-  const { locale, slug, section } = await params;
+}: PageProps<"/[locale]/guide/[section]">) {
+  const { locale, section } = await params;
   if (!hasLocale(locale)) notFound();
-
-  const animal = getAnimal(slug);
-  if (!animal) notFound();
 
   const sectionId = SLUG_TO_SECTION[section];
   if (!sectionId) notFound();
-  if (!sectionsFor(animal).includes(sectionId)) notFound();
 
   const dict = await getDictionary(locale);
-  const loaded = await loadSection(locale, animal.slug, sectionId);
+  const loaded = await loadSection(locale, sectionId);
   if (!loaded.exists) notFound();
 
   const { frontmatter, body } = loaded;
@@ -47,7 +39,6 @@ export default async function SectionPage({
       ? dict.labels.section_one_source
       : dict.labels.section_n_sources.replace("{n}", String(sourcesCount));
 
-  const isFalcon = animal.slug === "falcons";
   const mdxComponents = {
     FalconSpeciesTabs: () => (
       <FalconSpeciesTabs
@@ -135,11 +126,11 @@ export default async function SectionPage({
 
       <div className="mt-12 flex justify-center">
         <Link
-          href={`/${locale}/animals/${animal.slug}`}
+          href={`/${locale}/guide`}
           className="inline-flex items-center gap-2 text-sm text-(--color-muted) link-underline"
         >
           <span aria-hidden>←</span>
-          {dict.labels.backToAnimal}
+          {dict.labels.backToGuide}
         </Link>
       </div>
     </>
@@ -153,15 +144,8 @@ export default async function SectionPage({
         className="border-b border-(--color-border) bg-(--color-background)/80"
       >
         <div className="mx-auto max-w-3xl px-6 py-3 flex items-center gap-2 text-xs uppercase tracking-[0.14em] text-(--color-muted)">
-          <Link href={`/${locale}/animals`} className="hover:text-(--color-foreground)">
-            {dict.nav.animals}
-          </Link>
-          <span aria-hidden>›</span>
-          <Link
-            href={`/${locale}/animals/${animal.slug}`}
-            className="hover:text-(--color-foreground)"
-          >
-            {animal.names[locale]}
+          <Link href={`/${locale}/guide`} className="hover:text-(--color-foreground)">
+            {dict.nav.guide}
           </Link>
           <span aria-hidden>›</span>
           <span className="text-(--color-foreground)">
@@ -173,7 +157,7 @@ export default async function SectionPage({
       <article className="mx-auto max-w-2xl px-6 pt-10 pb-20 md:pt-16">
         <header className="text-center">
           <p className="text-xs uppercase tracking-[0.18em] text-(--color-accent-strong)">
-            {animal.names[locale]} · {dict.sections[sectionId]}
+            {dict.sections[sectionId]}
           </p>
           <h1 className="mt-4 font-display text-3xl md:text-5xl text-(--color-foreground) leading-tight">
             {frontmatter.title}
@@ -201,13 +185,9 @@ export default async function SectionPage({
           </div>
         </header>
 
-        {isFalcon ? (
-          <FalconSpeciesProvider>
-            <SupplementModeProvider>{articleBody}</SupplementModeProvider>
-          </FalconSpeciesProvider>
-        ) : (
-          articleBody
-        )}
+        <FalconSpeciesProvider>
+          <SupplementModeProvider>{articleBody}</SupplementModeProvider>
+        </FalconSpeciesProvider>
       </article>
     </>
   );

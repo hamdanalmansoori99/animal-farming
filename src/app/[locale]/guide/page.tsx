@@ -1,27 +1,22 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { hasLocale, getDictionary } from "@/lib/i18n";
 import { ALL_SECTIONS } from "@/lib/animals";
 import { listExistingSections, loadSection } from "@/lib/content";
 import { Hero } from "@/components/Hero";
 import { ChapterCard } from "@/components/ChapterCard";
-import { publicAsset } from "@/lib/assets";
 
-export default async function HomePage({ params }: PageProps<"/[locale]">) {
+export default async function GuideIndexPage({
+  params,
+}: PageProps<"/[locale]/guide">) {
   const { locale } = await params;
   if (!hasLocale(locale)) notFound();
-  const dict = await getDictionary(locale);
 
+  const dict = await getDictionary(locale);
   const present = await listExistingSections(locale);
 
-  // Prefer /hero-falcon.png once the user delivers it; fall back to the
-  // existing hero-home.png until then.
-  const heroImage =
-    (await publicAsset("/images/hero-falcon.png")) ??
-    (await publicAsset("/images/hero-home.png"));
-
-  // Load frontmatter for every available chapter so the grid shows real
-  // MDX titles and summaries.
+  // Pull frontmatter (title + summary) for every available chapter so the
+  // card grid shows real MDX-authored copy instead of just dictionary labels.
   const frontmatters = new Map<
     string,
     { title?: string; summary?: string }
@@ -38,27 +33,15 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
     })
   );
 
-  const stat = dict.labels.homeStat.replace(
-    "{published}",
-    String(present.size)
-  );
+  const stat = dict.labels.chaptersPublished
+    .replace("{published}", String(present.size))
+    .replace("{total}", String(ALL_SECTIONS.length));
 
   return (
     <>
-      <Hero
-        eyebrow={dict.labels.homeEyebrow}
-        title={dict.site.title}
-        tagline={dict.site.tagline}
-        imageSrc={heroImage}
-        imageAlt=""
-        meta={<span>{stat}</span>}
-        cta={{
-          href: `/${locale}/guide/overview`,
-          label: dict.labels.startWithOverview,
-        }}
-      />
+      <Hero size="sm" title={dict.nav.guide} meta={<span>{stat}</span>} />
 
-      <div className="mx-auto max-w-6xl px-6 py-14 md:py-20">
+      <div className="mx-auto max-w-6xl px-6 py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {ALL_SECTIONS.map((sectionId) => {
             const fm = frontmatters.get(sectionId);
@@ -76,12 +59,12 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
           })}
         </div>
 
-        <div className="mt-16 flex justify-center">
+        <div className="mt-12 flex justify-center">
           <Link
-            href={`/${locale}/guide`}
+            href={`/${locale}`}
             className="text-sm tracking-wide text-(--color-muted) link-underline"
           >
-            {dict.labels.browseAll} →
+            ← {dict.nav.home}
           </Link>
         </div>
       </div>
