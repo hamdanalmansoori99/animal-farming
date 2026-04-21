@@ -14,10 +14,10 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
 
   const present = await listExistingSections(locale);
 
-  // Prefer /hero-falcon.png once the user delivers it; fall back to the
-  // existing hero-home.png until then.
+  // The twilight silhouette is the falconry-pivot hero; fall back to
+  // the desert farm scene if it's not present yet.
   const heroImage =
-    (await publicAsset("/images/hero-falcon.png")) ??
+    (await publicAsset("/images/twilight-silhouette.png")) ??
     (await publicAsset("/images/hero-home.png"));
 
   // Load frontmatter for every available chapter so the grid shows real
